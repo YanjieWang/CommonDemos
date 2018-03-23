@@ -1,0 +1,34 @@
+PROJECT (HELLO)#设置项目名称
+
+SET(SRC_LIST main.c)#将SRC_LIST值设置为main.c,作用就是定义变量SRC_LIST ,main.c 赋值给此变量
+
+TARGET_LINK_LIBRARIES(hello SDL ...)#需要在hello模块必须之前已被add
+                                    #hello为模块名(ADD_EXECUTABLE(hello ${SRC_LIST}) 中的hello)
+                                    #SDL ... 为需要连接的库(如连接libtest.so  可用 test  libtest.so -ltest 或全路径 任选一种)
+LINK_LIBRARIES(SDL ...) #需要在add之前使用
+                        #SDL ... 为需要连接的库(如连接libtest.so  可用 test  libtest.so -ltest 或全路径 任选一种)
+
+
+
+
+ADD_EXECUTABLE(hello ${SRC_LIST})#生成可执行文件 hello。 ${} 是引用某个值。
+
+INCLUDE_DIRECTORIES(directory1 directory2 ...) 添加额外头文件路径
+link_directories(directory1 directory2 ...) 添加库文件查找路径
+
+
+-----------------------------------------------
+预定义变量
+PROJECT_SOURCE_DIR cmake命令后紧跟的目录，一般是工程的根目录
+PROJECT_BINARY_DIR 执行cmake命令的目录,通常是${PROJECT_SOURCE_DIR}/build
+
+
+
+CMAKE_INCLUDE_PATH 系统环境变量,非cmake变量
+CMAKE_LIBRARY_PATH 系统环境变量,非cmake变量
+CMAKE_CURRENT_SOURCE_DIR 当前处理的CMakeLists.txt所在的路径
+CMAKE_CURRENT_BINARY_DIR target编译目录
+
+LIBRARY_OUTPUT_PATH 生成库文件输出路径,需要设置(如set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/out/lib))
+EXECUTABLE_OUTPUT_PATH 生成可执行文件路径需要设置(set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/out/lib))
+

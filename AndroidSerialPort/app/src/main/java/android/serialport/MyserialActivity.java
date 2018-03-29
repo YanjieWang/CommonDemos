@@ -33,7 +33,7 @@ public class MyserialActivity extends Activity {
 	InputStream mInputStream;
     SerialPort sp;
     ReadThread  mReadThread;
-    String tty = "/dev/ttySC1";
+    String tty = "/dev/ttyUSB0";
     int boundryRate = 9600;
     File ttyFile = new File(tty);
     boolean isDockExist = ttyFile.exists();
@@ -74,7 +74,7 @@ public class MyserialActivity extends Activity {
         chuankou = (EditText) findViewById(R.id.chuankou);
         botelv = (EditText) findViewById(R.id.botelv);
         String str_chuankou = getSharedPreferences("setting",Context.MODE_PRIVATE).
-                getString("chuankou","/dev/ttySC1");
+                getString("chuankou","/dev/ttyUSB0");
         String str_botelv = getSharedPreferences("setting",Context.MODE_PRIVATE).
                 getString("botelv","9600");
         tty = str_chuankou;

@@ -49,14 +49,18 @@
         android:layout_height="wrap_content"
         android:enabled="false"
         android:text="发送数据" />
-    <TextView
-        android:background="#60f0"
-        android:id="@+id/EditTextReceive"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:textSize="10sp"
-        android:isScrollContainer="true"
-        android:text=""
-        android:hint="接收" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:background="#60f0"
+            android:id="@+id/EditTextReceive"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:isScrollContainer="true"
+            android:text=""
+            android:hint="接收" />
+    </ScrollView>
 
 </LinearLayout>

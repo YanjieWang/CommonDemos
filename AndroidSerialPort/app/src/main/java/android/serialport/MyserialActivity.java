@@ -33,7 +33,7 @@ public class MyserialActivity extends Activity {
 	InputStream mInputStream;
     SerialPort sp;
     ReadThread  mReadThread;
-    String tty = "/dev/ttyUSB0";
+    String tty = "/dev/ttySC1";
     int boundryRate = 9600;
     File ttyFile = new File(tty);
     boolean isDockExist = ttyFile.exists();
@@ -74,10 +74,11 @@ public class MyserialActivity extends Activity {
         chuankou = (EditText) findViewById(R.id.chuankou);
         botelv = (EditText) findViewById(R.id.botelv);
         String str_chuankou = getSharedPreferences("setting",Context.MODE_PRIVATE).
-                getString("chuankou","/dev/ttyUSB0");
+                getString("chuankou","/dev/ttySC1");
         String str_botelv = getSharedPreferences("setting",Context.MODE_PRIVATE).
                 getString("botelv","9600");
         tty = str_chuankou;
+        ttyFile = new File(str_chuankou);
         try {
             boundryRate = Integer.parseInt(str_botelv);
         }catch (Exception e){
@@ -98,15 +99,18 @@ public class MyserialActivity extends Activity {
         findViewById(R.id.bt_serial_send).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 try {
+                    mReceive.setText("");
                     mOutputStream = sp.getOutputStream();
-                    mOutputStream.write(NumUtils.bigBytes(NumUtils.toBytes("02 30 30 30 34 31 38 30 30 30 30 30 30 31 3c 03")));
-                    showToast("发送数据 :\n" + mReception.getText().toString() + "\n成功");
+                    byte[] by = NumUtils.toBytes(mReception.getText().toString().trim());
+                    mOutputStream.write(by);
+                    showToast("发送数据 :\n" + NumUtils.bytesToHexFun1(by) + "\n成功");
                 } catch (IOException e) {
                     e.printStackTrace();
                     showToast("发送数据失败");
                 }
             }
         });
+
 
     }
 
@@ -138,7 +142,9 @@ public class MyserialActivity extends Activity {
 		runOnUiThread(new Runnable() {
 			public void run() {
 				if (mReceive != null) {
-                    mReceive.append(new String(NumUtils.bytesToHexFun1(buffer)));
+				    byte[] data = new byte[size];
+                    System.arraycopy(buffer,0,data,0,size);
+                    mReceive.append(new String(NumUtils.bytesToHexFun1(data)));
 				}
 			}
 		});

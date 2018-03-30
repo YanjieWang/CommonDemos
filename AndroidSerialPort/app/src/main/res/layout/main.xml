@@ -39,7 +39,7 @@
         android:layout_width="fill_parent"
         android:layout_height="150dp"
         android:textSize="10sp"
-        android:text="02 31 3B 37 32 37 33 30 30 30 32 36 31 36 33 03"
+        android:text="02 30 30 30 34 30 3C 30 30 30 30 30 30 30 38 03"
         android:digits="01231456789abcdef \nABCDEF"
         android:hint="发送"
         android:lines="3" />

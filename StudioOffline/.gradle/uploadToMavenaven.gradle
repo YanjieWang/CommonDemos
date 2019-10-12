@@ -1,0 +1,30 @@
+tasks.withType(JavaCompile) {
+
+    options.encoding = "UTF-8"
+
+}
+
+
+def MAVEN_LOCAL_PATH= System.getProperty("offlinestudio.home.path")+'/.m2'
+
+project.logger.lifecycle "Local Repository=$MAVEN_LOCAL_PATH"
+
+task updateCache(type:Copy) {
+
+    group = 'upload'
+
+    from new File(gradle.gradleUserHomeDir,'caches/modules-2/files-2.1')
+
+    into MAVEN_LOCAL_PATH
+
+    eachFile{
+
+        List<String> parts= it.path.split('/')
+        project.logger.lifecycle "Local Repository=$parts"
+        it.path = parts[0].replace('.','/')+ '/' + parts[1] + '/' + parts[2] + '/' + parts[4]
+
+    }
+
+    includeEmptyDirs false
+
+}

@@ -1,0 +1,22 @@
+allprojects {
+    repositories {
+    maven { url System.getProperty("offlinestudio.home.path")+'/.m2' }
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/gradle-plugin' }
+
+    }
+
+	buildscript { 
+		repositories {
+    maven { url System.getProperty("offlinestudio.home.path")+'/.m2' } 
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/gradle-plugin' }
+		}
+    apply from: System.getProperty("offlinestudio.home.path")+"/.gradle/uploadToMavenaven.gradle"
+	}
+
+}

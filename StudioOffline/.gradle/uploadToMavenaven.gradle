@@ -5,11 +5,16 @@ tasks.withType(JavaCompile) {
 }
 
 
-def MAVEN_LOCAL_PATH= System.getProperty("offlinestudio.home.path")+'/.m2'
+def MAVEN_LOCAL_PATH= System.getProperty("gradle.user.home")+'/../.m2'
 
 project.logger.lifecycle "Local Repository=$MAVEN_LOCAL_PATH"
 
 task updateCache(type:Copy) {
+
+	File m2_dir=new File(MAVEN_LOCAL_PATH);
+	if (!m2_dir.exists()){
+		m2_dir.mkdirs();
+	}
 
     group = 'upload'
 

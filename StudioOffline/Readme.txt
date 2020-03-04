@@ -1,12 +1,14 @@
 AndroidStudio离线运行方案
 
-1.替换相关文件
-2.在studio\bin\idea.properties配置工作目录
-      eg:offlinestudio.home.path=C:/studio_offline
-3.在有网环境新建项目，运行项目，待项目可完全运行后，运行upcathe
+1.将本库中的.gradle文件夹放入和studio同级文件夹
 
-4.将studio sdk .gradle .m2 4个目录拷贝到离线电脑。
+2.在studio\bin\idea.properties文件开头添加如下3行
+idea.config.path=${idea.home.path}/../.AndroidStudio/config
+idea.system.path=${idea.home.path}/../.AndroidStudio/system
+gradle.user.home=${idea.home.path}/../.gradle
 
-5.在离线新电脑studio\bin\idea.properties配置工作目录
+3.在有网环境新建项目，运行项目，待项目可完全运行后，运行updateCache
+
+4.将studio SDK .gradle .m2 .AndroidStudio 5个目录拷贝到离线电脑。
 
 done

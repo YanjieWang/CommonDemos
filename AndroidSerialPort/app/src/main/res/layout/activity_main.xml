@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="#434f"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableLayout
+        android:layout_margin="5dp"
+        android:background="#5f33"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:text="波特率"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="字符编码"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <CheckBox
+                android:id="@+id/is_16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="16进制"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Spinner
+                android:id="@+id/spn"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:dropDownWidth="match_parent"
+                android:entries="@array/baudrates_name" />
+            <Spinner
+                android:id="@+id/spn_code"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:dropDownWidth="match_parent"
+                android:entries="@array/codes" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="clean"
+                android:text="清除"/>
+        </TableRow>
+    </TableLayout>
+    <ScrollView
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:background="#5f33"
+        android:layout_height="0dp">
+        <TextView
+            android:id="@+id/textView1"
+            android:textSize="10sp"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="" />
+    </ScrollView>
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:background="#5f33"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:textSize="10sp"
+            android:id="@+id/editText1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/buttonSend"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="发送"/>
+    </LinearLayout>
+
+</LinearLayout>
